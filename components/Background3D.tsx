@@ -59,7 +59,7 @@ function Orb({
           color={color}
           /* --- Optimizations for 120fps mobile --- */
           resolution={128} // Lower resolution for the transmission buffer
-          samples={4}      // Limit multi-sampling for roughness
+          samples={4} // Limit multi-sampling for roughness
         />
       </mesh>
     </Float>
@@ -82,9 +82,11 @@ export function Background3D() {
 
   return (
     <div className="fixed inset-0 -z-10 w-full h-full pointer-events-none">
-      <Canvas 
+      <Canvas
         camera={{ position: [0, 0, 10], fov: 45 }}
-        dpr={[1, 1.5]} /* Batasi pixel-ratio agar mobile tidak merender 3x lipat pixel */
+        dpr={[
+          1, 1.5,
+        ]} /* Batasi pixel-ratio agar mobile tidak merender 3x lipat pixel */
       >
         <ambientLight intensity={ambientIntensity} />
         <directionalLight position={[10, 10, 5]} intensity={1.5} />
