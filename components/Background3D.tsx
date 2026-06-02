@@ -20,8 +20,10 @@ function Orb({
   scale: number;
 }) {
   const meshRef = useRef<THREE.Mesh>(null);
+  const materialRef = useRef<any>(null);
+  const [targetColor] = useState(() => new THREE.Color());
 
-  // Subtle mouse parallax
+  // Subtle mouse parallax & color transition
   useFrame((state) => {
     if (!meshRef.current) return;
     const t = state.clock.getElapsedTime();
@@ -40,6 +42,12 @@ function Orb({
       position[1] + state.pointer.y * 2,
       0.05,
     );
+    
+    // Smooth color transition
+    if (materialRef.current) {
+      targetColor.set(color);
+      materialRef.current.color.lerp(targetColor, 0.05);
+    }
   });
 
   return (
@@ -48,6 +56,7 @@ function Orb({
         {/* Reduce segments for mobile performance */}
         <sphereGeometry args={[1, 32, 32]} />
         <MeshTransmissionMaterial
+          ref={materialRef}
           backside
           backsideThickness={1}
           thickness={2.5}
