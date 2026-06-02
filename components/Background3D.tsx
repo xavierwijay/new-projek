@@ -42,7 +42,7 @@ function Orb({
       position[1] + state.pointer.y * 2,
       0.05,
     );
-    
+
     // Smooth color transition
     if (materialRef.current) {
       targetColor.set(color);
