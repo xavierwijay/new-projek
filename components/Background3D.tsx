@@ -45,7 +45,8 @@ function Orb({
   return (
     <Float speed={2} rotationIntensity={1} floatIntensity={2}>
       <mesh ref={meshRef} position={position} scale={scale}>
-        <sphereGeometry args={[1, 64, 64]} />
+        {/* Reduce segments for mobile performance */}
+        <sphereGeometry args={[1, 32, 32]} />
         <MeshTransmissionMaterial
           backside
           backsideThickness={1}
@@ -56,6 +57,9 @@ function Orb({
           chromaticAberration={0.1}
           anisotropy={0.3}
           color={color}
+          /* --- Optimizations for 120fps mobile --- */
+          resolution={128} // Lower resolution for the transmission buffer
+          samples={4}      // Limit multi-sampling for roughness
         />
       </mesh>
     </Float>
@@ -78,7 +82,10 @@ export function Background3D() {
 
   return (
     <div className="fixed inset-0 -z-10 w-full h-full pointer-events-none">
-      <Canvas camera={{ position: [0, 0, 10], fov: 45 }}>
+      <Canvas 
+        camera={{ position: [0, 0, 10], fov: 45 }}
+        dpr={[1, 1.5]} /* Batasi pixel-ratio agar mobile tidak merender 3x lipat pixel */
+      >
         <ambientLight intensity={ambientIntensity} />
         <directionalLight position={[10, 10, 5]} intensity={1.5} />
         <directionalLight
