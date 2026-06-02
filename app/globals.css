@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+@theme {
+  --color-maroon-50: #fbf3f4;
+  --color-maroon-100: #f5e4e7;
+  --color-maroon-200: #ecc2ca;
+  --color-maroon-300: #e097a5;
+  --color-maroon-400: #d06277;
+  --color-maroon-500: #c23b55;
+  --color-maroon-600: #a5273f;
+  --color-maroon-700: #8b1e32;
+  --color-maroon-800: #741a2c;
+  --color-maroon-900: #621927;
+  --color-maroon-950: #360a12;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+}
+
+:root {
+  --background: #fbf3f4; /* Light off-white with maroon tint */
+  --foreground: #621927; /* Solid maroon */
+}
+
+.dark {
+  --background: #1a0509; /* Deep burgundy/wine */
+  --foreground: #f5e4e7; /* Soft maroon-white */
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), sans-serif;
+}
+
