@@ -8,10 +8,10 @@ import { LinkCard } from "@/components/LinkCard";
 import Image from "next/image";
 
 const links = [
-  { title: "Portfolio Projects", href: "#", icon: Briefcase },
-  { title: "LinkedIn", href: "#", icon: User },
-  { title: "GitHub", href: "#", icon: Code },
-  { title: "Contact Me", href: "#", icon: Mail },
+  { title: "Visit my Portfolio", href: "#", icon: Briefcase },
+  { title: "Connect to LinkedIn", href: "https://www.linkedin.com/in/xavierwijaya/", icon: User },
+  { title: "GitHub", href: "https://github.com/xavierwijay", icon: Code },
+  { title: "Contact Me", href: "mailto:xavierwijayahere@gmail.com", icon: Mail },
 ];
 
 const containerVariants = {
@@ -42,8 +42,8 @@ export default function Home() {
             <div className="absolute inset-0 rounded-full bg-maroon-500/30 dark:bg-maroon-500/50 blur-xl scale-125 animate-pulse" />
             <div className="relative w-32 h-32 rounded-full overflow-hidden border-4 border-white/40 dark:border-white/20 backdrop-blur-sm shadow-2xl">
               <Image
-                src="https://api.dicebear.com/7.x/avataaars/svg?seed=Xavier&backgroundColor=b6e3f4,c0aede,d1d4f9,ffdfbf"
-                alt="Xavier Avatar"
+                src="/pictofme.jpeg"
+                alt="Xavier Professional Photo "
                 fill
                 className="object-cover"
                 unoptimized
@@ -53,10 +53,10 @@ export default function Home() {
 
           <div>
             <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-maroon-950 dark:text-white drop-shadow-sm">
-              Xavier
+              Xavier C.K Wijaya
             </h1>
             <p className="mt-2 text-maroon-800/80 dark:text-maroon-100/70 font-medium">
-              Informatics Engineering Student | Freelance Web Developer
+              Chairman @HMPTIUKSW | Freelance Web Developer 
             </p>
           </div>
         </motion.div>
