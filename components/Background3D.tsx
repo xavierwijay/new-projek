@@ -1,14 +1,26 @@
 "use client";
 
 import { Canvas, useFrame } from "@react-three/fiber";
-import { MeshTransmissionMaterial, Float, Environment } from "@react-three/drei";
+import {
+  MeshTransmissionMaterial,
+  Float,
+  Environment,
+} from "@react-three/drei";
 import { useTheme } from "next-themes";
 import { useRef, useState, useEffect } from "react";
 import * as THREE from "three";
 
-function Orb({ color, position, scale }: { color: string; position: [number, number, number]; scale: number }) {
+function Orb({
+  color,
+  position,
+  scale,
+}: {
+  color: string;
+  position: [number, number, number];
+  scale: number;
+}) {
   const meshRef = useRef<THREE.Mesh>(null);
-  
+
   // Subtle mouse parallax
   useFrame((state) => {
     if (!meshRef.current) return;
@@ -16,18 +28,26 @@ function Orb({ color, position, scale }: { color: string; position: [number, num
     // Slowly rotate
     meshRef.current.rotation.x = Math.sin(t / 4);
     meshRef.current.rotation.y = Math.sin(t / 2);
-    
+
     // Parallax based on pointer
-    meshRef.current.position.x = THREE.MathUtils.lerp(meshRef.current.position.x, position[0] + (state.pointer.x * 2), 0.05);
-    meshRef.current.position.y = THREE.MathUtils.lerp(meshRef.current.position.y, position[1] + (state.pointer.y * 2), 0.05);
+    meshRef.current.position.x = THREE.MathUtils.lerp(
+      meshRef.current.position.x,
+      position[0] + state.pointer.x * 2,
+      0.05,
+    );
+    meshRef.current.position.y = THREE.MathUtils.lerp(
+      meshRef.current.position.y,
+      position[1] + state.pointer.y * 2,
+      0.05,
+    );
   });
 
   return (
     <Float speed={2} rotationIntensity={1} floatIntensity={2}>
       <mesh ref={meshRef} position={position} scale={scale}>
         <sphereGeometry args={[1, 64, 64]} />
-        <MeshTransmissionMaterial 
-          backside 
+        <MeshTransmissionMaterial
+          backside
           backsideThickness={1}
           thickness={2.5}
           roughness={0.1}
@@ -61,8 +81,12 @@ export function Background3D() {
       <Canvas camera={{ position: [0, 0, 10], fov: 45 }}>
         <ambientLight intensity={ambientIntensity} />
         <directionalLight position={[10, 10, 5]} intensity={1.5} />
-        <directionalLight position={[-10, -10, -5]} intensity={0.5} color={orbColor} />
-        
+        <directionalLight
+          position={[-10, -10, -5]}
+          intensity={0.5}
+          color={orbColor}
+        />
+
         {/* Environment map for realistic glass reflection */}
         <Environment preset="city" />
 

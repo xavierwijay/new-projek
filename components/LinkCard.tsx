@@ -13,7 +13,11 @@ interface LinkCardProps {
 
 const itemVariants = {
   hidden: { y: 20, opacity: 0 },
-  visible: { y: 0, opacity: 1, transition: { type: "spring", stiffness: 300, damping: 24 } }
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: { type: "spring", stiffness: 300, damping: 24 },
+  },
 };
 
 export function LinkCard({ href, title, icon: Icon }: LinkCardProps) {
@@ -32,7 +36,7 @@ export function LinkCard({ href, title, icon: Icon }: LinkCardProps) {
         "shadow-[0_4px_30px_rgba(0,0,0,0.1)]",
         "transition-all duration-300",
         "hover:border-maroon-400 dark:hover:border-maroon-500",
-        "hover:shadow-[0_0_15px_rgba(194,59,85,0.4)] dark:hover:shadow-[0_0_20px_rgba(165,39,63,0.6)]"
+        "hover:shadow-[0_0_15px_rgba(194,59,85,0.4)] dark:hover:shadow-[0_0_20px_rgba(165,39,63,0.6)]",
       )}
     >
       <div className="flex items-center justify-center p-3 rounded-xl bg-white/20 dark:bg-black/30 text-maroon-700 dark:text-maroon-200">
@@ -42,13 +46,18 @@ export function LinkCard({ href, title, icon: Icon }: LinkCardProps) {
         {title}
       </span>
       <div className="ml-auto opacity-0 translate-x-[-10px] group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
-        <svg 
-          className="w-5 h-5 text-maroon-600 dark:text-maroon-400" 
-          fill="none" 
-          viewBox="0 0 24 24" 
+        <svg
+          className="w-5 h-5 text-maroon-600 dark:text-maroon-400"
+          fill="none"
+          viewBox="0 0 24 24"
           stroke="currentColor"
         >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M9 5l7 7-7 7"
+          />
         </svg>
       </div>
     </motion.a>

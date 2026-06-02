@@ -20,9 +20,9 @@ const containerVariants = {
     opacity: 1,
     transition: {
       staggerChildren: 0.15,
-      delayChildren: 0.2
-    }
-  }
+      delayChildren: 0.2,
+    },
+  },
 };
 
 export default function Home() {
@@ -32,7 +32,7 @@ export default function Home() {
       <ThemeToggle />
 
       <div className="z-10 w-full max-w-xl mx-auto flex flex-col items-center mt-12 mb-20 gap-8">
-        <motion.div 
+        <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.8, type: "spring" }}
@@ -41,9 +41,9 @@ export default function Home() {
           <div className="relative group">
             <div className="absolute inset-0 rounded-full bg-maroon-500/30 dark:bg-maroon-500/50 blur-xl scale-125 animate-pulse" />
             <div className="relative w-32 h-32 rounded-full overflow-hidden border-4 border-white/40 dark:border-white/20 backdrop-blur-sm shadow-2xl">
-              <Image 
-                src="https://api.dicebear.com/7.x/avataaars/svg?seed=Xavier&backgroundColor=b6e3f4,c0aede,d1d4f9,ffdfbf" 
-                alt="Xavier Avatar" 
+              <Image
+                src="https://api.dicebear.com/7.x/avataaars/svg?seed=Xavier&backgroundColor=b6e3f4,c0aede,d1d4f9,ffdfbf"
+                alt="Xavier Avatar"
                 fill
                 className="object-cover"
                 unoptimized
@@ -61,18 +61,18 @@ export default function Home() {
           </div>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
           className="w-full flex flex-col gap-4"
         >
           {links.map((link, idx) => (
-            <LinkCard 
-              key={idx} 
-              title={link.title} 
-              href={link.href} 
-              icon={link.icon} 
+            <LinkCard
+              key={idx}
+              title={link.title}
+              href={link.href}
+              icon={link.icon}
             />
           ))}
         </motion.div>
